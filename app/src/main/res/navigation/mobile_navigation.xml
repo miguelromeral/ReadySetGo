@@ -22,9 +22,4 @@
         android:name="es.miguelromeral.readysetgo.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="es.miguelromeral.readysetgo.ui.settings.SettingsFragment"
-        android:label="settings_fragment"
-        tools:layout="@layout/settings_fragment" />
 </navigation>
