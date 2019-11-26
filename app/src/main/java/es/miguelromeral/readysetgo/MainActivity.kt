@@ -16,15 +16,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this )
-        val style = sharedPreferences.getBoolean("appStyle", false)
-        if(style){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }else{
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
-
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
+
+        MyApplication.changeStyle()
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
