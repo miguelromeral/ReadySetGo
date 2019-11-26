@@ -1,19 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_home"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="homeViewModel"
+            type="es.miguelromeral.readysetgo.ui.home.HomeViewModel" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:onClick="@{() -> homeViewModel.layoutTouched()}">
+
+
+        <TextView
+            android:id="@+id/textTime"
+            android:text="Testing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/textTime"
+            app:layout_constraintStart_toStartOf="@+id/textTime"
+            app:layout_constraintTop_toTopOf="@+id/textTime" />
+
+        <LinearLayout
+            android:id="@+id/layoutLights"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_home">
+
+            <ImageView
+                android:id="@+id/imSep0"
+                style="@style/ImageLights"
+                app:srcCompat="@drawable/semaphore_black" />
+
+            <ImageView
+                android:id="@+id/imSep1"
+                style="@style/ImageLights"
+                app:srcCompat="@drawable/semaphore_black" />
+
+            <ImageView
+                android:id="@+id/imSep2"
+                style="@style/ImageLights"
+                app:srcCompat="@drawable/semaphore_black" />
+
+            <ImageView
+                android:id="@+id/imSep3"
+                style="@style/ImageLights"
+                app:srcCompat="@drawable/semaphore_black" />
+
+            <ImageView
+                android:id="@+id/imSep4"
+                style="@style/ImageLights"
+                app:srcCompat="@drawable/semaphore_black" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

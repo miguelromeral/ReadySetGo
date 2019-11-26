@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ImageLights">
+        <item name="android:layout_height">42sp</item>
+        <item name="android:layout_width">42sp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
 </resources>

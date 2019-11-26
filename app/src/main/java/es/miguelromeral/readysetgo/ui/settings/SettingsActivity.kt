@@ -1,6 +1,8 @@
 package es.miguelromeral.readysetgo.ui.settings
 
 import android.content.Intent
+import android.content.Intent.getIntent
+import android.content.Intent.getIntentOld
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
@@ -40,7 +42,9 @@ class SettingsActivity : AppCompatActivity() {
 
         override fun onSharedPreferenceChanged(preferences: SharedPreferences?, key: String?) {
             when(key){
-                MyApplication.SP_APPSTYLE -> MyApplication.changeStyle()
+                MyApplication.SP_APPSTYLE -> {
+                    MyApplication.changeStyle()
+                }
             }
         }
 
