@@ -16,6 +16,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import es.miguelromeral.readysetgo.R
 import es.miguelromeral.readysetgo.databinding.FragmentHomeBinding
+import es.miguelromeral.readysetgo.ui.database.ApplicationDatabaseDao
+import es.miguelromeral.readysetgo.ui.database.ReadySetGoDatabase
 import es.miguelromeral.readysetgo.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -32,8 +34,12 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
+
+        val application = requireNotNull(this.activity).application
+        val dataSource = ReadySetGoDatabase.getInstance(application).database
+        val viewModelFactory = HomeViewModelFactory(dataSource, application)
+
+        homeViewModel = ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         //val root = inflater.inflate(R.layout.fragment_home, container, false)

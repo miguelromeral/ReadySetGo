@@ -6,12 +6,17 @@ import android.os.CountDownTimer
 import android.widget.Toast
 import androidx.lifecycle.*
 import es.miguelromeral.readysetgo.MyApplication
+import es.miguelromeral.readysetgo.ui.database.ApplicationDatabaseDao
+import es.miguelromeral.readysetgo.ui.database.ReadySetGoDatabase
+import es.miguelromeral.readysetgo.ui.database.Start
 import es.miguelromeral.readysetgo.ui.home.HomeViewModel.Companion.COUNTDOWN_LAUNCHED
 import es.miguelromeral.readysetgo.ui.home.HomeViewModel.Companion.COUNTDOWN_NO_STARTED
 import kotlinx.coroutines.*
 import kotlin.random.Random
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(
+    val database: ApplicationDatabaseDao,
+    application: Application) : AndroidViewModel(application) {
 
     companion object{
         val COUNTDOWN_NO_STARTED = -1
@@ -50,6 +55,10 @@ class HomeViewModel : ViewModel() {
     val score : LiveData<Long?>
         get() = _score
 
+
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
     init{
         _countdown.value = COUNTDOWN_NO_STARTED
         randomWait = Random.nextLong(COUNTDOWN_MAX_WAIT)
@@ -84,6 +93,9 @@ class HomeViewModel : ViewModel() {
                     _countdown.value = COUNTDOWN_NO_STARTED
                     val result = end - timestamp as Long
                     _score.value = result
+                    uiScope.launch {
+                        createStartRecord(end, result, randomWait)
+                    }
                 }
             }
             else -> {
@@ -92,4 +104,18 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
+
+    private suspend fun createStartRecord(date: Long, time:Long, waiting: Long){
+        return withContext(Dispatchers.IO){
+            var record = Start(0L, date, time, waiting)
+            database.insert(record)
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        // …
+        viewModelJob.cancel()
+    }
+
 }
