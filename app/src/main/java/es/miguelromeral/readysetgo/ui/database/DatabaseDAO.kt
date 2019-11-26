@@ -22,5 +22,5 @@ interface ApplicationDatabaseDao {
     fun clear_starts()
 
     @Query("SELECT * FROM starts_table ORDER BY startId DESC")
-    fun getAllStarts(): LiveData<Start>
+    fun getAllStarts(): LiveData<List<Start>>
 }

@@ -24,7 +24,7 @@ class HomeViewModel(
 
         private const val ONE_SECOND = 1000L
         private const val COUNTDOWN_TIME = 5000L
-        private const val COUNTDOWN_MIN_WAIT = 1000L
+        private const val COUNTDOWN_MIN_WAIT = 500L
         private const val COUNTDOWN_MAX_WAIT = 3000L
 
         private const val COUNTDOWN_MAX_ALLOWED = 10000L
