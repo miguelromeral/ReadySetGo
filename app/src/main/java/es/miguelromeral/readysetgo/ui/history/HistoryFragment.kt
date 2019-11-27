@@ -44,7 +44,7 @@ class HistoryFragment : Fragment() {
 
         viewModel.startRecords.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
 

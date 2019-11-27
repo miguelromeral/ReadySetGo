@@ -85,6 +85,7 @@ class HomeViewModel(
         val end = System.currentTimeMillis()
         when(countdown.value){
             COUNTDOWN_NO_STARTED -> {
+                initTimer()
                 timer.start()
                 timestamp = null
             }

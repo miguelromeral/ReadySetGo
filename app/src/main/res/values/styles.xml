@@ -9,9 +9,21 @@
     </style>
 
     <style name="ImageLights">
-        <item name="android:layout_height">42sp</item>
-        <item name="android:layout_width">42sp</item>
+        <item name="android:layout_height">52sp</item>
+        <item name="android:layout_width">52sp</item>
         <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="StartResult">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">100dp</item>
+    </style>
+    <style name="StartDetails">
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
     </style>
 
 </resources>

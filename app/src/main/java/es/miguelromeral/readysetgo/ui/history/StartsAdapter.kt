@@ -4,26 +4,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import es.miguelromeral.readysetgo.R
+import es.miguelromeral.readysetgo.databinding.ListItemStartBinding
+import es.miguelromeral.readysetgo.ui.convertLongToTime
 import es.miguelromeral.readysetgo.ui.database.Start
 import kotlinx.android.synthetic.main.list_item_start.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class StartsAdapter : RecyclerView.Adapter<StartsAdapter.ViewHolder>()
+class StartsAdapter : ListAdapter<Start, StartsAdapter.ViewHolder>(StartDiffCallback())
 {
-    var data = listOf<Start>()
-        set(value){
-            field = value
-            notifyDataSetChanged()
-        }
-
-    override fun getItemCount() = data.size
+//    var data = listOf<Start>()
+//        set(value){
+//            field = value
+//            notifyDataSetChanged()
+//        }
+//
+//    override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int){
-        val item = data[position]
+        val item = getItem(position)
         holder.bind(item)
     }
 
@@ -31,30 +35,32 @@ class StartsAdapter : RecyclerView.Adapter<StartsAdapter.ViewHolder>()
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val tv_date: TextView = itemView.findViewById(R.id.item_date)
-        val tv_time: TextView = itemView.findViewById(R.id.item_time)
+    class ViewHolder private constructor(val binding: ListItemStartBinding) : RecyclerView.ViewHolder(binding.root)
+    {
 
         fun bind(item: Start){
-            tv_date.text = convertLongToTime(item.date)
-            tv_time.text = item.time.toString()
-        }
-
-        private fun convertLongToTime(time: Long): String {
-            val date = Date(time)
-            val format = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
-            return format.format(date)
+            binding.record = item
+            binding.executePendingBindings()
         }
 
         companion object{
             fun from(parent: ViewGroup): ViewHolder{
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.list_item_start, parent, false)
-                return ViewHolder(view)
+                val binding = ListItemStartBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
             }
         }
     }
 }
 
+class StartDiffCallback : DiffUtil.ItemCallback<Start>() {
+    override fun areItemsTheSame(oldItem: Start, newItem: Start): Boolean {
+        return oldItem.startId == newItem.startId
+    }
+
+    override fun areContentsTheSame(oldItem: Start, newItem: Start): Boolean {
+        return oldItem == newItem
+    }
+}
 
 
