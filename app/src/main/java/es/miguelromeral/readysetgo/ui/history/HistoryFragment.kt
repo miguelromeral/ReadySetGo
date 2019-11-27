@@ -1,10 +1,11 @@
 package es.miguelromeral.readysetgo.ui.history
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -16,6 +17,7 @@ import es.miguelromeral.readysetgo.ui.database.Start
 import es.miguelromeral.readysetgo.ui.formatTime
 import es.miguelromeral.readysetgo.ui.home.HomeViewModel
 import es.miguelromeral.readysetgo.ui.home.HomeViewModelFactory
+import es.miguelromeral.readysetgo.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.fragment_history.*
 
 class HistoryFragment : Fragment() {
@@ -44,13 +46,13 @@ class HistoryFragment : Fragment() {
         val adapter = StartsAdapter()
         binding.historyList.adapter = adapter
 
-        viewModel.startRecords.observe(viewLifecycleOwner, Observer {
+        viewModel.startRecords?.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }
         })
 
-        viewModel.bestRecord.observe(viewLifecycleOwner, Observer {
+        viewModel.bestRecord?.observe(viewLifecycleOwner, Observer {
             if(it != null){
                 tvBestStart.text = formatTime(it.time)
             }else{
@@ -58,6 +60,44 @@ class HistoryFragment : Fragment() {
             }
         })
 
+        setHasOptionsMenu(true)
+
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.options_history, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if(item != null){
+            when(item.itemId) {
+                R.id.option_clearRecords -> {
+                    viewModel.clearDatabase()
+
+//                    // Build an AlertDialog
+//                    val builder = AlertDialog.Builder(context)
+//                    builder.setTitle(resources.getString(R.string.clear_all_records))
+//                    builder.setMessage(resources.getString(R.string.option_msg_clear_starts))
+//
+//                    // Set the alert dialog yes button click listener
+//                    builder.setPositiveButton(resources.getString(R.string.option_msg_clear_all),
+//                        DialogInterface.OnClickListener { dialog, which ->
+//
+//                        })
+//
+//                    // Set the alert dialog no button click listener
+//                    builder.setNegativeButton(resources.getString(R.string.option_msg_cancel),
+//                        DialogInterface.OnClickListener { dialog, which ->
+//                        })
+//
+//                    val dialog = builder.create()
+//                    // Display the alert dialog on interface
+//                    dialog.show()
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

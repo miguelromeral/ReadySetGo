@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
             tvScore.text = if(it == null || it == HomeViewModel.NO_SCORE)
                 resources.getString(R.string.home_no_score)
             else
-                resources.getString(R.string.home_last_score) + formatTime(it)
+                resources.getString(R.string.home_last_score) + " "+formatTime(it)
         })
 
         setHasOptionsMenu(true)

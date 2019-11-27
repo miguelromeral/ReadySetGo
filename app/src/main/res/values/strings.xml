@@ -3,7 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_history">History</string>
     <string name="title_notifications">Notifications</string>
-    <string name="settings">Settings</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Home Screen -->
@@ -17,7 +16,7 @@
     <string name="home_go">GO!</string>
 
     <string name="home_no_score">NO SCORE YET</string>
-    <string name="home_last_score">LAST SCORE: </string>
+    <string name="home_last_score">LAST SCORE:</string>
 
 
     <!-- Preference Titles -->
@@ -35,5 +34,12 @@
     <!-- History Screen -->
     <string name="details_waiting_time">Waiting time: </string>
     <string name="no_time_set_yet">No times set yet</string>
+
+    <!-- Options menu -->
+    <string name="clear_all_records">Clear all records</string>
+    <string name="settings">Settings</string>
+    <string name="option_msg_clear_starts">Are you sure you want to clear all the starts data? This action cannot be undone</string>
+    <string name="option_msg_clear_all">REMOVE DATA</string>
+    <string name="option_msg_cancel">CANCEL</string>
 
 </resources>

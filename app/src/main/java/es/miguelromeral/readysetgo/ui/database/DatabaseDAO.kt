@@ -19,11 +19,11 @@ interface ApplicationDatabaseDao {
     fun get(key: Long): Start?
 
     @Query("DELETE FROM starts_table")
-    fun clear_starts()
+    fun clearStarts()
 
     @Query("SELECT * FROM starts_table ORDER BY startId DESC")
     fun getAllStarts(): LiveData<List<Start>>
 
-    @Query("SELECT MIN(time) AS min, * FROM starts_table ORDER BY waiting_time ASC LIMIT 1")
+    @Query("SELECT * FROM starts_table ORDER BY time ASC, waiting_time ASC, date ASC LIMIT 1")
     fun getBestStart(): LiveData<Start>
 }

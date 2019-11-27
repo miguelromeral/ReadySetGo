@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import es.miguelromeral.readysetgo.R
 import es.miguelromeral.readysetgo.ui.database.ApplicationDatabaseDao
 import es.miguelromeral.readysetgo.ui.database.Start
+import kotlinx.coroutines.*
 
 class HistoryViewModel(
     val database: ApplicationDatabaseDao,
@@ -28,4 +29,29 @@ class HistoryViewModel(
         value = application.resources.getString(R.string.no_time_set_yet)
     }
     val bestText: LiveData<String> = _bestText
+
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+
+
+    fun clearDatabase(){
+        uiScope.launch {
+            clearDatabaseIO()
+        }
+    }
+
+    private suspend fun clearDatabaseIO(){
+        return withContext(Dispatchers.IO){
+            database.clearStarts()
+        }
+    }
+
+
+
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
 }
