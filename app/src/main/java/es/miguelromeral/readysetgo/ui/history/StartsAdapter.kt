@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import es.miguelromeral.readysetgo.R
 import es.miguelromeral.readysetgo.databinding.ListItemStartBinding
+import es.miguelromeral.readysetgo.generated.callback.OnClickListener
 import es.miguelromeral.readysetgo.ui.convertLongToTime
 import es.miguelromeral.readysetgo.ui.database.Start
 import kotlinx.android.synthetic.main.list_item_start.view.*
@@ -16,30 +17,25 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class StartsAdapter : ListAdapter<Start, StartsAdapter.ViewHolder>(StartDiffCallback())
+class StartsAdapter(val clickListener: StartListener) :
+    ListAdapter<Start, StartsAdapter.ViewHolder>(StartDiffCallback())
 {
-//    var data = listOf<Start>()
-//        set(value){
-//            field = value
-//            notifyDataSetChanged()
-//        }
-//
-//    override fun getItemCount() = data.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int){
+    override fun onBindViewHolder(holder: StartsAdapter.ViewHolder, position: Int){
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(getItem(position)!!, clickListener)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder{
-        return ViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StartsAdapter.ViewHolder {
+        return StartsAdapter.ViewHolder.from(parent)
     }
 
     class ViewHolder private constructor(val binding: ListItemStartBinding) : RecyclerView.ViewHolder(binding.root)
     {
 
-        fun bind(item: Start){
+        fun bind(item: Start, clickListener: StartListener){
             binding.record = item
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -64,3 +60,6 @@ class StartDiffCallback : DiffUtil.ItemCallback<Start>() {
 }
 
 
+class StartListener(val clickListener: (item: Start) -> Unit){
+    fun onClick(start: Start) = clickListener(start)
+}

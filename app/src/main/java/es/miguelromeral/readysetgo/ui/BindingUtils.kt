@@ -9,17 +9,23 @@ import java.util.*
 
 @BindingAdapter("timeFormatted")
 fun TextView.setTimeFormatted(item: Start) {
-    text = formatTime(item.time)
+    item?.let {
+        text = formatTime(item.time)
+    }
 }
 
 @BindingAdapter("dateFormatted")
 fun TextView.setDateFormatted(item: Start) {
-    text = convertLongToTime(item.date)
+    item?.let {
+        text = convertLongToTime(item.date)
+    }
 }
 
 @BindingAdapter("waitingFormatted")
 fun TextView.setWaitingFormatted(item: Start) {
-    text = context.resources.getString(R.string.details_waiting_time) + " " + formatTime(item.waitingTime)
+    item?.let{
+        text = context.resources.getString(R.string.details_waiting_time) + " " + formatTime(item.waitingTime)
+    }
 }
 
 

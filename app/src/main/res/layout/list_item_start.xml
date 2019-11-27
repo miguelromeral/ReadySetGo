@@ -8,11 +8,16 @@
         <variable
             name="record"
             type="es.miguelromeral.readysetgo.ui.database.Start" />
+
+        <variable
+            name="clickListener"
+            type="es.miguelromeral.readysetgo.ui.history.StartListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(record)}">
 
         <TextView
             android:id="@+id/item_date"

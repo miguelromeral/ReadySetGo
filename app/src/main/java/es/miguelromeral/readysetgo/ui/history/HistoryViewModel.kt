@@ -24,6 +24,7 @@ class HistoryViewModel(
 
     val startRecords = database.getAllStarts()
 
+    var selectedRecord = MutableLiveData<Start>()
 
     private var _bestText = MutableLiveData<String>().apply {
         value = application.resources.getString(R.string.no_time_set_yet)
@@ -33,6 +34,10 @@ class HistoryViewModel(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+
+    fun changeSelectedRecord(item: Start){
+        selectedRecord.value = item
+    }
 
 
     fun clearDatabase(){
@@ -46,9 +51,6 @@ class HistoryViewModel(
             database.clearStarts()
         }
     }
-
-
-
 
     override fun onCleared() {
         super.onCleared()

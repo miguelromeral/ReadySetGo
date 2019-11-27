@@ -11,109 +11,111 @@
             type="es.miguelromeral.readysetgo.ui.home.HomeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="729dp"
-        android:onClick="@{() -> homeViewModel.layoutTouched()}"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="1dp"
-        app:layout_constraintVertical_chainStyle="packed">
 
-
-        <TextView
-            android:id="@+id/tvScore"
-            style="@style/StartResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/text_home"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:onClick="@{() -> homeViewModel.layoutTouched()}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:isScrollContainer="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.20999998"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="0.321" />
+            tools:layout_editor_absoluteY="1dp">
 
-        <TextView
-            android:id="@+id/text_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/layoutLights"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvScore"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:text="Result" />
 
-        <LinearLayout
-            android:id="@+id/layoutLights"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/tvInstructions"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_home"
-            app:layout_constraintVertical_chainStyle="packed">
+            <TextView
+                android:id="@+id/tvScore"
+                style="@style/StartResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/text_home"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="0.321" />
 
-            <ImageView
-                android:id="@+id/imSep0"
-                style="@style/ImageLights"
-                app:srcCompat="@drawable/semaphore_black" />
+            <TextView
+                android:id="@+id/text_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/layoutLights"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvScore"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Result" />
 
-            <ImageView
-                android:id="@+id/imSep1"
-                style="@style/ImageLights"
-                app:srcCompat="@drawable/semaphore_black" />
+            <LinearLayout
+                android:id="@+id/layoutLights"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/tvInstructions"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_home"
+                app:layout_constraintVertical_chainStyle="packed">
 
-            <ImageView
-                android:id="@+id/imSep2"
-                style="@style/ImageLights"
-                app:srcCompat="@drawable/semaphore_black" />
+                <ImageView
+                    android:id="@+id/imSep0"
+                    style="@style/ImageLights"
+                    app:srcCompat="@drawable/semaphore_black" />
 
-            <ImageView
-                android:id="@+id/imSep3"
-                style="@style/ImageLights"
-                app:srcCompat="@drawable/semaphore_black" />
+                <ImageView
+                    android:id="@+id/imSep1"
+                    style="@style/ImageLights"
+                    app:srcCompat="@drawable/semaphore_black" />
 
-            <ImageView
-                android:id="@+id/imSep4"
-                style="@style/ImageLights"
-                app:srcCompat="@drawable/semaphore_black" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/imSep2"
+                    style="@style/ImageLights"
+                    app:srcCompat="@drawable/semaphore_black" />
 
-        <TextView
-            android:id="@+id/tvInstructions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/game_instructions_home"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutLights"
-            app:layout_constraintVertical_chainStyle="packed" />
+                <ImageView
+                    android:id="@+id/imSep3"
+                    style="@style/ImageLights"
+                    app:srcCompat="@drawable/semaphore_black" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/imSep4"
+                    style="@style/ImageLights"
+                    app:srcCompat="@drawable/semaphore_black" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvInstructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_instructions_home"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutLights"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

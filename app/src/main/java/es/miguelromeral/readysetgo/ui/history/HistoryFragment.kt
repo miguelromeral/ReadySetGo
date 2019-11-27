@@ -43,21 +43,29 @@ class HistoryFragment : Fragment() {
         binding.historyViewModel = viewModel
         binding.lifecycleOwner = this
 
-        val adapter = StartsAdapter()
+        val adapter = StartsAdapter(StartListener { item -> viewModel.changeSelectedRecord(item) })
         binding.historyList.adapter = adapter
 
-        viewModel.startRecords?.observe(viewLifecycleOwner, Observer {
+        viewModel.startRecords.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }
         })
 
-        viewModel.bestRecord?.observe(viewLifecycleOwner, Observer {
+        viewModel.bestRecord.observe(viewLifecycleOwner, Observer {
             if(it != null){
                 tvBestStart.text = formatTime(it.time)
             }else{
                 tvBestStart.text = resources.getString(R.string.no_time_set_yet)
             }
+        })
+
+        viewModel.selectedRecord.observe(viewLifecycleOwner, Observer {
+            it?.let{
+                tvSelectedStart.text = formatTime(it.time)
+                return@Observer
+            }
+            tvSelectedStart.text = resources.getString(R.string.time_template)
         })
 
         setHasOptionsMenu(true)
@@ -74,27 +82,26 @@ class HistoryFragment : Fragment() {
         if(item != null){
             when(item.itemId) {
                 R.id.option_clearRecords -> {
-                    viewModel.clearDatabase()
 
-//                    // Build an AlertDialog
-//                    val builder = AlertDialog.Builder(context)
-//                    builder.setTitle(resources.getString(R.string.clear_all_records))
-//                    builder.setMessage(resources.getString(R.string.option_msg_clear_starts))
-//
-//                    // Set the alert dialog yes button click listener
-//                    builder.setPositiveButton(resources.getString(R.string.option_msg_clear_all),
-//                        DialogInterface.OnClickListener { dialog, which ->
-//
-//                        })
-//
-//                    // Set the alert dialog no button click listener
-//                    builder.setNegativeButton(resources.getString(R.string.option_msg_cancel),
-//                        DialogInterface.OnClickListener { dialog, which ->
-//                        })
-//
-//                    val dialog = builder.create()
-//                    // Display the alert dialog on interface
-//                    dialog.show()
+                    context?.let {
+                        // Build an AlertDialog
+                        val builder = AlertDialog.Builder(it)
+                        builder.setTitle(resources.getString(R.string.clear_all_records))
+                        builder.setMessage(resources.getString(R.string.option_msg_clear_starts))
+
+                        // Set the alert dialog yes button click listener
+                        builder.setPositiveButton(resources.getString(R.string.option_msg_clear_all),
+                            DialogInterface.OnClickListener { dialog, which ->
+                                viewModel.clearDatabase()
+                            })
+
+                        // Set the alert dialog no button click listener
+                        builder.setNegativeButton(resources.getString(R.string.option_msg_cancel), null)
+
+                        val dialog = builder.create()
+                        // Display the alert dialog on interface
+                        dialog.show()
+                    }
                 }
             }
         }

@@ -19,7 +19,14 @@
 
         <SwitchPreferenceCompat
             android:key="appStyle"
-            android:title="Style"
-            android:summary="Choose the app colours"/>
+            android:title="@string/preference_title_style"
+            android:summary="@string/preference_summary_style"/>
+
+        <Preference
+            android:key="single_line_title"
+            android:title="@string/preferences_version_title"
+            android:summary="@string/preferences_version_summary"
+            android:icon="@android:drawable/ic_dialog_info"
+            app:singleLineTitle="true" />
 
 </PreferenceScreen>
