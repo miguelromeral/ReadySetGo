@@ -2,7 +2,6 @@ package es.miguelromeral.readysetgo.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
@@ -10,14 +9,11 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import es.miguelromeral.readysetgo.R
 import es.miguelromeral.readysetgo.databinding.FragmentHomeBinding
-import es.miguelromeral.readysetgo.ui.database.ApplicationDatabaseDao
 import es.miguelromeral.readysetgo.ui.database.ReadySetGoDatabase
+import es.miguelromeral.readysetgo.ui.formatTime
 import es.miguelromeral.readysetgo.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -50,10 +46,25 @@ class HomeFragment : Fragment() {
         val textView: TextView = binding.textHome
 
         homeViewModel.countdown.observe(this, Observer {
-            textView.text = "TAPPED: ${it}!"
+            it?.let{
+                when(it) {
+                    HomeViewModel.COUNTDOWN_NO_STARTED ->
+                        textView.text = resources.getString(R.string.home_begin)
+                    HomeViewModel.COUNTDOWN_LAUNCHED ->
+                        textView.text = resources.getString(R.string.home_go)
+                    else ->
+                        textView.text = resources.getString(R.string.home_ready_set)
+                }
+                return@Observer
+            }
+            textView.text = resources.getString(R.string.home_begin)
         })
+
         homeViewModel.score.observe(this, Observer {
-            textTime.text = if(it == HomeViewModel.NO_SCORE) "No score" else "Score: ${it.toString()}"
+            tvScore.text = if(it == null || it == HomeViewModel.NO_SCORE)
+                resources.getString(R.string.home_no_score)
+            else
+                resources.getString(R.string.home_last_score) + formatTime(it)
         })
 
         setHasOptionsMenu(true)

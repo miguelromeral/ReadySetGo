@@ -5,6 +5,8 @@ import android.content.Context
 import android.os.CountDownTimer
 import android.widget.Toast
 import androidx.lifecycle.*
+
+import es.miguelromeral.readysetgo.R
 import es.miguelromeral.readysetgo.MyApplication
 import es.miguelromeral.readysetgo.ui.database.ApplicationDatabaseDao
 import es.miguelromeral.readysetgo.ui.database.ReadySetGoDatabase
@@ -31,11 +33,6 @@ class HomeViewModel(
 
         const val NO_SCORE = 0L
     }
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
 
     private var _countdown = MutableLiveData<Int>()
     val countdown: LiveData<Int>
@@ -64,7 +61,6 @@ class HomeViewModel(
         randomWait = Random.nextLong(COUNTDOWN_MAX_WAIT)
         timestamp = null
         _score.value = NO_SCORE
-        initTimer()
     }
 
     private fun initTimer(){

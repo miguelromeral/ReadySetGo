@@ -12,6 +12,12 @@
         Cuando las luces se apagen, toca de nuevo la pantalla para ver cuánto has tardado en reaccionar.\n
         ¡Buena suerte!
     </string>
+    <string name="home_begin">TAP THE SCREEN TO BEGIN</string>
+    <string name="home_ready_set">READY... SET...</string>
+    <string name="home_go">GO!</string>
+
+    <string name="home_no_score">NO SCORE YET</string>
+    <string name="home_last_score">LAST SCORE: </string>
 
 
     <!-- Preference Titles -->
