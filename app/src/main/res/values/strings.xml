@@ -6,6 +6,14 @@
     <string name="settings">Settings</string>
     <string name="title_activity_settings">Settings</string>
 
+    <!-- Home Screen -->
+    <string name="game_instructions_home">
+        Toca la pantalla para que el semáforo comience a iluminarse.\n
+        Cuando las luces se apagen, toca de nuevo la pantalla para ver cuánto has tardado en reaccionar.\n
+        ¡Buena suerte!
+    </string>
+
+
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
@@ -18,7 +26,8 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
 
-    <!-- History Preferences -->
+    <!-- History Screen -->
     <string name="details_waiting_time">Waiting time: </string>
+    <string name="no_time_set_yet">No times set yet</string>
 
 </resources>

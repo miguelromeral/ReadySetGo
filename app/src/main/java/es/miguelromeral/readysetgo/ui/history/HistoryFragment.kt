@@ -13,8 +13,10 @@ import es.miguelromeral.readysetgo.R
 import es.miguelromeral.readysetgo.databinding.FragmentHistoryBinding
 import es.miguelromeral.readysetgo.ui.database.ReadySetGoDatabase
 import es.miguelromeral.readysetgo.ui.database.Start
+import es.miguelromeral.readysetgo.ui.formatTime
 import es.miguelromeral.readysetgo.ui.home.HomeViewModel
 import es.miguelromeral.readysetgo.ui.home.HomeViewModelFactory
+import kotlinx.android.synthetic.main.fragment_history.*
 
 class HistoryFragment : Fragment() {
 
@@ -45,6 +47,14 @@ class HistoryFragment : Fragment() {
         viewModel.startRecords.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
+            }
+        })
+
+        viewModel.bestRecord.observe(viewLifecycleOwner, Observer {
+            if(it != null){
+                tvBestStart.text = formatTime(it.time)
+            }else{
+                tvBestStart.text = resources.getString(R.string.no_time_set_yet)
             }
         })
 

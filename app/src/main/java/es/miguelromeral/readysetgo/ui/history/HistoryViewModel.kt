@@ -5,7 +5,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import es.miguelromeral.readysetgo.R
 import es.miguelromeral.readysetgo.ui.database.ApplicationDatabaseDao
+import es.miguelromeral.readysetgo.ui.database.Start
 
 class HistoryViewModel(
     val database: ApplicationDatabaseDao,
@@ -17,6 +19,13 @@ class HistoryViewModel(
     val text: LiveData<String> = _text
 
 
+    val bestRecord = database.getBestStart()
+
     val startRecords = database.getAllStarts()
 
+
+    private var _bestText = MutableLiveData<String>().apply {
+        value = application.resources.getString(R.string.no_time_set_yet)
+    }
+    val bestText: LiveData<String> = _bestText
 }

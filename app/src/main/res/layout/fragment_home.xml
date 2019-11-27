@@ -79,5 +79,12 @@
                 style="@style/ImageLights"
                 app:srcCompat="@drawable/semaphore_black" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/game_instructions_home"
+            android:textAlignment="center" />
     </LinearLayout>
 </layout>

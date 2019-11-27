@@ -23,6 +23,8 @@ fun TextView.setWaitingFormatted(item: Start) {
 }
 
 
+
+
 fun formatTime(time: Long): String{
     val dou = time.toDouble() / 1000
     return dou.format(3)
