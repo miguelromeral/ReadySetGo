@@ -4,5 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="colorBlack">#050505</color>
+    <color name="myBlack">#050505</color>
+
+    <color name="appIconBackground">#ffc826</color>
+
 </resources>

@@ -46,5 +46,6 @@
     <string name="option_msg_cancel">CANCEL</string>
     <string name="preference_summary_style">Change the style to be dark coloured</string>
     <string name="preference_title_style">Dark Mode</string>
+    <string name="developed_by">Developed by MiguelRomeral</string>
 
 </resources>
