@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Ready Set Go</string>
-    <string name="title_home">Home</string>
-    <string name="title_history">History</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="app_name" translatable="false">Tap To Go!</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_history">Historial</string>
+    <string name="title_notifications">Notificaciones</string>
+    <string name="title_activity_settings">Ajustes</string>
 
     <!-- Home Screen -->
     <string name="game_instructions_home">
@@ -11,69 +11,59 @@
         Cuando las luces se apagen, toca de nuevo la pantalla para ver cuánto has tardado en reaccionar.\n
         ¡Buena suerte!
     </string>
-    <string name="home_begin">TAP THE SCREEN TO BEGIN</string>
-    <string name="home_ready_set">READY... SET...</string>
-    <string name="home_go">GO!</string>
+    <string name="home_begin">TOCA LA PANTALLA PARA EMPEZAR</string>
+    <string name="home_ready_set">PREPARADOS... LISTOS...</string>
+    <string name="home_go">¡YA!</string>
 
-    <string name="home_no_score">NO SCORE YET</string>
-    <string name="home_last_score">LAST SCORE:</string>
+    <string name="home_no_score">SIN RESULTADO</string>
+    <string name="home_last_score">ÚLTIMO RESULTADO:</string>
 
 
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-    <string name="preferences_version_title">Version installed</string>
-    <string name="preferences_version_summary">0.1 (to be released)</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="preferences_version_title">Versión instalada</string>
+    <string name="preferences_version_summary" translatable="false">1.0.1 (#2) (Beta)</string>
 
 
     <!-- Preferences IDs -->
-    <string name="preference_id_appstyle">appStyle</string>
-    <string name="preference_id_secondduration">preferenceSecondDuration</string>
-    <string name="preference_id_maxwait">preferenceMaxWaitingTime</string>
-    <string name="preference_id_restore_game_settings">preferenceRestartGameSettings</string>
-
+    <string name="preference_id_appstyle" translatable="false">appStyle</string>
+    <string name="preference_id_secondduration" translatable="false">preferenceSecondDuration</string>
+    <string name="preference_id_maxwait" translatable="false">preferenceMaxWaitingTime</string>
+    <string name="preference_id_restore_game_settings" translatable="false">preferenceRestartGameSettings</string>
 
     <!-- History Screen -->
-    <string name="details_waiting_time">Waiting time: </string>
-    <string name="no_time_set_yet">No times set yet</string>
-    <string name="time_template">-.---</string>
+    <string name="details_waiting_time">Tiempo de espera:</string>
+    <string name="no_time_set_yet">Sin tiempos todavía</string>
+    <string name="time_template" translatable="false">-.---</string>
 
     <!-- Options menu -->
-    <string name="clear_all_records">Clear all records</string>
-    <string name="settings">Settings</string>
-    <string name="option_msg_clear_starts">Are you sure you want to clear all the starts data? This action cannot be undone</string>
-    <string name="option_msg_clear_all">REMOVE DATA</string>
-    <string name="option_msg_cancel">CANCEL</string>
-    <string name="preference_summary_style">Change the style to be dark coloured</string>
-    <string name="preference_title_style">Dark Mode</string>
-    <string name="developed_by">Developed by MiguelRomeral</string>
-    <string name="style">Style</string>
-    <string name="about">About</string>
-    <string name="game_settings">Game Settings</string>
-    <string name="preference_max_wait_title">Maximum time (in millis) to wait until the lights turn off (Default: 2500)</string>
-    <string name="preference_secondduration_title">Time (in millis) to turn each light on (Default: 1000 ms)</string>
-    <string name="preference_secondduration_summary">Second Duration</string>
-    <string name="preference_max_wait_summary">Waiting Time</string>
-    <string name="preference_restart_game_settings">Set Default Configuration</string>
-    <string name="preference_restart_game_settings_summary">Set the game settings as they were when you installed the application. This action do not erase your current data</string>
+    <string name="clear_all_records">Eliminar registros</string>
+    <string name="option_msg_clear_starts">¿Estás seguro de que quiere eliminar todos los registros? Esta acción no se puede deshacer</string>
+    <string name="option_msg_clear_all">ELIMINAR DATOS</string>
+    <string name="option_msg_cancel">CANCELAR</string>
+    <string name="preference_summary_style">Cambiar los colores de la aplicación para que se vea más oscuro</string>
+    <string name="preference_title_style">Modo oscuro</string>
+    <string name="developed_by" translatable="false">Developed by MiguelRomeral</string>
+    <string name="style">Estilo</string>
+    <string name="about">Acerca de</string>
+    <string name="game_settings">Ajustes del Juego</string>
+    <string name="preference_max_wait_title">Máximo tiempo (en milisegundos) de espera hasta que las luces se apagen</string>
+    <string name="preference_secondduration_title">Duración (en milisegundos) para que se encienda cada semáforo</string>
+    <string name="preference_secondduration_summary">Tiempo por semáforo</string>
+    <string name="preference_max_wait_summary">Tiempo de espera</string>
+    <string name="preference_restart_game_settings">Establecer configuración por defecto</string>
+    <string name="preference_restart_game_settings_summary">
+        Establece los ajustes del juego a como eran cuando la instalaste. Esta acción no elimina tus datos actuales.</string>
 
 
-    <string name="set_custom">KEEP CUSTOM</string>
-    <string name="set_default">SET DEFAULT</string>
-    <string name="settings_set_default_game_title">Reset Game Configuration</string>
-    <string name="settings_set_default_game_summary">Do you want to restore the default game configuration? This action will not have effect on your current data.</string>
-    <string name="game_settings_changed_ok">Default Game Configuration successfully changed!</string>
+    <string name="set_custom">PERSONALIZADO</string>
+    <string name="set_default">REESTABLECER</string>
+    <string name="settings_set_default_game_title">Restablecer Configuración del Juego</string>
+    <string name="settings_set_default_game_summary">
+        ¿Quieres reestablecer la configuración del juego? Esta acción no tendrá efecto en tus datos actuales.</string>
+    <string name="game_settings_changed_ok">¡Ajustes del juego asignados por defecto con éxito!</string>
 
 
-    <string name="step_time">Step Time:</string>
-    <string name="max_wait_time_formatted">Max Waiting Time:</string>
-
+    <string name="step_time">Tiempo de paso:</string>
+    <string name="max_wait_time_formatted">Máx. tiempo espera:</string>
 
 </resources>

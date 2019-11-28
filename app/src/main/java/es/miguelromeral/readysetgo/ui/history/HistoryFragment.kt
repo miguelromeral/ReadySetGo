@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -32,6 +33,7 @@ class HistoryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
 
         val application = requireNotNull(this.activity).application
         val dataSource = ReadySetGoDatabase.getInstance(application).database
