@@ -17,5 +17,11 @@ data class Start(
     val time: Long = -1L,
 
     @ColumnInfo(name = "waiting_time")
-    val waitingTime: Long = 0L
+    val waitingTime: Long = 0L,
+
+    @ColumnInfo(name = "step_time")
+    val stepTime: Long = 0L,
+
+    @ColumnInfo(name = "max_wait_time")
+    val maxWaitTime: Long = 0L
 )

@@ -72,4 +72,8 @@
     <string name="game_settings_changed_ok">Default Game Configuration successfully changed!</string>
 
 
+    <string name="step_time">Step Time:</string>
+    <string name="max_wait_time_formatted">Max Waiting Time:</string>
+
+
 </resources>

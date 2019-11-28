@@ -29,6 +29,21 @@ fun TextView.setWaitingFormatted(item: Start) {
 }
 
 
+@BindingAdapter("stepFormatted")
+fun TextView.setStepFormatted(item: Start) {
+    item?.let{
+        text = context.resources.getString(R.string.step_time) + " " + formatTime(item.stepTime)
+    }
+}
+
+
+@BindingAdapter("maxWaitingTimeFormatted")
+fun TextView.setMaxWaitingTimeFormatted(item: Start) {
+    item?.let{
+        text = context.resources.getString(R.string.max_wait_time_formatted) + " " + formatTime(item.maxWaitTime)
+    }
+}
+
 
 
 fun formatTime(time: Long): String{

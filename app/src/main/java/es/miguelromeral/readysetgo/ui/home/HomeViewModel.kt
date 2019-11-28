@@ -114,7 +114,12 @@ class HomeViewModel(
 
     private suspend fun createStartRecord(date: Long, time:Long, waiting: Long){
         return withContext(Dispatchers.IO){
-            var record = Start(0L, date, time, waiting)
+            var record = Start(0L,
+                date = date,
+                time = time,
+                waitingTime = waiting,
+                stepTime = preferenceOneSecondDuration,
+                maxWaitTime = preferenceCountdownMaxWait)
             database.insert(record)
         }
     }

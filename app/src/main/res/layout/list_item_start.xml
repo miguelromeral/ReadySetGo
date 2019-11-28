@@ -51,5 +51,23 @@
             tools:text="7.567"
             app:waitingFormatted="@{record}" />
 
+
+        <TextView
+            android:id="@+id/item_step"
+            style="@style/StartDetails"
+            app:layout_constraintStart_toStartOf="@+id/item_waiting"
+            app:layout_constraintTop_toBottomOf="@+id/item_waiting"
+            app:stepFormatted="@{record}"
+            tools:text="1.000" />
+
+        <TextView
+            android:id="@+id/item_maxwaittime"
+            style="@style/StartDetails"
+            android:layout_marginStart="32dp"
+            app:layout_constraintStart_toEndOf="@+id/item_step"
+            app:layout_constraintTop_toBottomOf="@+id/item_waiting"
+            app:maxWaitingTimeFormatted="@{record}"
+            tools:text="2.500" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
