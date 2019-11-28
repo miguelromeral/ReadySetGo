@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.preference.PreferenceManager
 import es.miguelromeral.readysetgo.R
 import es.miguelromeral.readysetgo.databinding.FragmentHistoryBinding
 import es.miguelromeral.readysetgo.ui.database.ReadySetGoDatabase
@@ -84,7 +85,7 @@ class HistoryFragment : Fragment() {
                 R.id.option_clearRecords -> {
 
                     context?.let {
-                        // Build an AlertDialog
+
                         val builder = AlertDialog.Builder(it)
                         builder.setTitle(resources.getString(R.string.clear_all_records))
                         builder.setMessage(resources.getString(R.string.option_msg_clear_starts))
@@ -92,14 +93,12 @@ class HistoryFragment : Fragment() {
                         // Set the alert dialog yes button click listener
                         builder.setPositiveButton(resources.getString(R.string.option_msg_clear_all),
                             DialogInterface.OnClickListener { dialog, which ->
+
                                 viewModel.clearDatabase()
                             })
-
-                        // Set the alert dialog no button click listener
-                        builder.setNegativeButton(resources.getString(R.string.option_msg_cancel), null)
+                        builder.setNegativeButton(resources.getString(R.string.option_msg_cancel),null)
 
                         val dialog = builder.create()
-                        // Display the alert dialog on interface
                         dialog.show()
                     }
                 }

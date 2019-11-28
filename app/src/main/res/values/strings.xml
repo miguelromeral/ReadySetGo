@@ -33,6 +33,13 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
 
+    <!-- Preferences IDs -->
+    <string name="preference_id_appstyle">appStyle</string>
+    <string name="preference_id_secondduration">preferenceSecondDuration</string>
+    <string name="preference_id_maxwait">preferenceMaxWaitingTime</string>
+    <string name="preference_id_restore_game_settings">preferenceRestartGameSettings</string>
+
+
     <!-- History Screen -->
     <string name="details_waiting_time">Waiting time: </string>
     <string name="no_time_set_yet">No times set yet</string>
@@ -47,5 +54,22 @@
     <string name="preference_summary_style">Change the style to be dark coloured</string>
     <string name="preference_title_style">Dark Mode</string>
     <string name="developed_by">Developed by MiguelRomeral</string>
+    <string name="style">Style</string>
+    <string name="about">About</string>
+    <string name="game_settings">Game Settings</string>
+    <string name="preference_max_wait_title">Maximum time (in millis) to wait until the lights turn off (Default: 2500)</string>
+    <string name="preference_secondduration_title">Time (in millis) to turn each light on (Default: 1000 ms)</string>
+    <string name="preference_secondduration_summary">Second Duration</string>
+    <string name="preference_max_wait_summary">Waiting Time</string>
+    <string name="preference_restart_game_settings">Set Default Configuration</string>
+    <string name="preference_restart_game_settings_summary">Set the game settings as they were when you installed the application. This action do not erase your current data</string>
+
+
+    <string name="set_custom">KEEP CUSTOM</string>
+    <string name="set_default">SET DEFAULT</string>
+    <string name="settings_set_default_game_title">Reset Game Configuration</string>
+    <string name="settings_set_default_game_summary">Do you want to restore the default game configuration? This action will not have effect on your current data.</string>
+    <string name="game_settings_changed_ok">Default Game Configuration successfully changed!</string>
+
 
 </resources>

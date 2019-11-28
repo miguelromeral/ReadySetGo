@@ -15,6 +15,53 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutStats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/history_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/tvBestStart"
+                style="@style/StartResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{historyViewModel.bestText}"
+                app:layout_constraintEnd_toStartOf="@+id/tvSelectedStart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="0.100" />
+
+            <TextView
+                android:id="@+id/tvSelectedStart"
+                style="@style/StartResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="134dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvBestStart"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="0.250" />
+
+            <TextView
+                android:id="@+id/tvDifference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{historyViewModel.difference}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvSelectedStart"
+                app:layout_constraintTop_toBottomOf="@+id/tvSelectedStart"
+                tools:text="+0.123" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/history_list"
             android:layout_width="0dp"
@@ -24,30 +71,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSelectedStart" />
-
-        <TextView
-            android:id="@+id/tvBestStart"
-            style="@style/StartResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{historyViewModel.bestText}"
-            app:layout_constraintEnd_toStartOf="@+id/tvSelectedStart"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="0.100" />
-
-        <TextView
-            android:id="@+id/tvSelectedStart"
-            style="@style/StartResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="134dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvBestStart"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="0.250" />
-
+            app:layout_constraintTop_toBottomOf="@+id/layoutStats" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

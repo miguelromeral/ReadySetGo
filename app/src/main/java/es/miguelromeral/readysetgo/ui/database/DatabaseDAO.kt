@@ -26,4 +26,7 @@ interface ApplicationDatabaseDao {
 
     @Query("SELECT * FROM starts_table ORDER BY time ASC, waiting_time ASC, date ASC LIMIT 1")
     fun getBestStart(): LiveData<Start>
+
+    @Query("SELECT * FROM starts_table ORDER BY time DESC LIMIT 1")
+    fun getLastStart(): LiveData<Start>
 }

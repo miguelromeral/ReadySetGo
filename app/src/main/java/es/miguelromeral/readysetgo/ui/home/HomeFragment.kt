@@ -2,6 +2,7 @@ package es.miguelromeral.readysetgo.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,6 +16,7 @@ import es.miguelromeral.readysetgo.databinding.FragmentHomeBinding
 import es.miguelromeral.readysetgo.ui.database.ReadySetGoDatabase
 import es.miguelromeral.readysetgo.ui.formatTime
 import es.miguelromeral.readysetgo.ui.settings.SettingsActivity
+import kotlinx.android.synthetic.main.fragment_history.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -24,6 +26,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
 
     private lateinit var lista: MutableList<ImageView>
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,11 +63,19 @@ class HomeFragment : Fragment() {
             textView.text = resources.getString(R.string.home_begin)
         })
 
-        homeViewModel.score.observe(this, Observer {
-            tvScore.text = if(it == null || it == HomeViewModel.NO_SCORE)
-                resources.getString(R.string.home_no_score)
-            else
-                resources.getString(R.string.home_last_score) + " "+formatTime(it)
+
+        homeViewModel.score.observe(this, Observer { newTime ->
+            if(newTime == null || newTime == HomeViewModel.NO_SCORE)
+                tvScore.text = resources.getString(R.string.home_no_score)
+            else {
+                tvScore.text = resources.getString(R.string.home_last_score) + " " + formatTime(newTime)
+
+                /*
+                homeViewModel.bestRecord.value?.let{
+                    tvScore.setTextColor(resources.getColor(R.color.colorWorse))
+                }
+                */
+            }
         })
 
         setHasOptionsMenu(true)
@@ -110,6 +121,11 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        homeViewModel.initSettings()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {

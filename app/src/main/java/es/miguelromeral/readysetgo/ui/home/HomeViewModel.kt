@@ -3,8 +3,10 @@ package es.miguelromeral.readysetgo.ui.home
 import android.app.Application
 import android.content.Context
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.*
+import androidx.preference.PreferenceManager
 
 import es.miguelromeral.readysetgo.R
 import es.miguelromeral.readysetgo.MyApplication
@@ -24,15 +26,16 @@ class HomeViewModel(
         val COUNTDOWN_NO_STARTED = -1
         val COUNTDOWN_LAUNCHED = 0
 
-        private const val ONE_SECOND = 1000L
-        private const val COUNTDOWN_TIME = 5000L
-        private const val COUNTDOWN_MIN_WAIT = 500L
-        private const val COUNTDOWN_MAX_WAIT = 3000L
-
-        private const val COUNTDOWN_MAX_ALLOWED = 10000L
+        const val DEFAULT_SECOND_DURATION = 1000L
+        const val DEFAULT_MAX_WAIT = 2000L
 
         const val NO_SCORE = 0L
     }
+
+    private var preferenceCountdownMaxWait: Long = DEFAULT_MAX_WAIT
+    private var preferenceOneSecondDuration: Long = DEFAULT_SECOND_DURATION
+    private var timeToTurnOn = preferenceOneSecondDuration * 5
+
 
     private var _countdown = MutableLiveData<Int>()
     val countdown: LiveData<Int>
@@ -44,7 +47,7 @@ class HomeViewModel(
 
     private lateinit var timer: CountDownTimer
 
-    private var randomWait: Long
+    private var randomWait: Long = 2000L
 
     private var timestamp: Long?
 
@@ -56,18 +59,25 @@ class HomeViewModel(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+    val bestRecord = database.getBestStart()
+
     init{
         _countdown.value = COUNTDOWN_NO_STARTED
-        randomWait = Random.nextLong(COUNTDOWN_MAX_WAIT)
         timestamp = null
         _score.value = NO_SCORE
     }
 
+    fun initSettings(){
+        preferenceCountdownMaxWait = MyApplication.getPreferenceMaxWait()
+        preferenceOneSecondDuration = MyApplication.getPreferenceSecondDuration()
+        timeToTurnOn = preferenceOneSecondDuration * 5
+    }
+
     private fun initTimer(){
-        randomWait = COUNTDOWN_TIME + COUNTDOWN_MIN_WAIT + Random.nextLong(COUNTDOWN_MAX_WAIT)
-        timer = object : CountDownTimer(randomWait, ONE_SECOND){
+        randomWait = timeToTurnOn + 200L + Random.nextLong(preferenceCountdownMaxWait)
+        timer = object : CountDownTimer(randomWait, preferenceOneSecondDuration){
             override fun onTick(milisUtilFinished: Long){
-                _countdown.value = ((randomWait - milisUtilFinished) / ONE_SECOND).toInt() + 1
+                _countdown.value = ((randomWait - milisUtilFinished) / preferenceOneSecondDuration).toInt() + 1
             }
 
             override fun onFinish() {

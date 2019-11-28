@@ -6,8 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import es.miguelromeral.readysetgo.R
+import es.miguelromeral.readysetgo.getDifferenceBetween
 import es.miguelromeral.readysetgo.ui.database.ApplicationDatabaseDao
 import es.miguelromeral.readysetgo.ui.database.Start
+import es.miguelromeral.readysetgo.ui.formatTime
 import kotlinx.coroutines.*
 
 class HistoryViewModel(
@@ -35,9 +37,27 @@ class HistoryViewModel(
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
 
+    private var _difference = MutableLiveData<String>()
+    val difference: LiveData<String>
+        get() = _difference
+
+
+    private lateinit var _lastSelected: MutableLiveData<Start>
+
+
     fun changeSelectedRecord(item: Start){
+        if(selectedRecord.value != null){
+            _lastSelected = selectedRecord
+        }
+
         selectedRecord.value = item
+
+        val best = bestRecord.value!!.time
+        val time = item.time
+
+        _difference.value = getDifferenceBetween(best, time)
     }
+
 
 
     fun clearDatabase(){

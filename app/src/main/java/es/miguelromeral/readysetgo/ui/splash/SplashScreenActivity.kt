@@ -9,7 +9,7 @@ import es.miguelromeral.readysetgo.MyApplication
 import es.miguelromeral.readysetgo.R
 
 class SplashScreenActivity : AppCompatActivity() {
-    private val SPLASH_TIME_OUT:Long = 2500 // 3 sec
+    private val SPLASH_TIME_OUT:Long = 1500 // 3 sec
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
