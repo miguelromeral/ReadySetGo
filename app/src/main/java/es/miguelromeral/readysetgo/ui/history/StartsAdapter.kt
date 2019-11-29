@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import es.miguelromeral.readysetgo.MyApplication
 import es.miguelromeral.readysetgo.R
 import es.miguelromeral.readysetgo.databinding.ListItemStartBinding
 import es.miguelromeral.readysetgo.generated.callback.OnClickListener
@@ -17,13 +18,19 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class StartsAdapter(val clickListener: StartListener) :
+class StartsAdapter(val clickListener: StartListener, val vm: HistoryViewModel) :
     ListAdapter<Start, StartsAdapter.ViewHolder>(StartDiffCallback())
 {
 
+    var viewModel = vm
+
+    fun updateViewModel(vm2: HistoryViewModel){
+        viewModel = vm2
+    }
+
     override fun onBindViewHolder(holder: StartsAdapter.ViewHolder, position: Int){
         val item = getItem(position)
-        holder.bind(getItem(position)!!, clickListener)
+        holder.bind(getItem(position)!!, clickListener, viewModel)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StartsAdapter.ViewHolder {
@@ -33,10 +40,27 @@ class StartsAdapter(val clickListener: StartListener) :
     class ViewHolder private constructor(val binding: ListItemStartBinding) : RecyclerView.ViewHolder(binding.root)
     {
 
-        fun bind(item: Start, clickListener: StartListener){
+        fun bind(item: Start, clickListener: StartListener, viewModel: HistoryViewModel){
             binding.record = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
+
+            val selected = viewModel.selectedRecord.value
+            selected?.let {
+                if(item.time <= selected.time){
+                    binding.itemTime.setTextColor(MyApplication.allResources.getColor(R.color.colorBetter))
+                }else if(item.time > selected.time){
+                    binding.itemTime.setTextColor(MyApplication.allResources.getColor(R.color.colorWorse))
+                }
+            }
+
+            val best = viewModel.bestRecord.value
+            best?.let{
+                if(item.time == best.time){
+                    binding.itemTime.setTextColor(MyApplication.allResources.getColor(R.color.colorBest))
+                }
+            }
+
         }
 
         companion object{

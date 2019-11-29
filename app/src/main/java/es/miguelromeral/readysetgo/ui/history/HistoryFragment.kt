@@ -46,7 +46,7 @@ class HistoryFragment : Fragment() {
         binding.historyViewModel = viewModel
         binding.lifecycleOwner = this
 
-        val adapter = StartsAdapter(StartListener { item -> viewModel.changeSelectedRecord(item) })
+        val adapter = StartsAdapter(StartListener { item -> viewModel.changeSelectedRecord(item) }, viewModel)
         binding.historyList.adapter = adapter
 
         viewModel.startRecords.observe(viewLifecycleOwner, Observer {
@@ -66,6 +66,7 @@ class HistoryFragment : Fragment() {
         viewModel.selectedRecord.observe(viewLifecycleOwner, Observer {
             it?.let{
                 tvSelectedStart.text = formatTime(it.time)
+                (binding.historyList.adapter as StartsAdapter).notifyDataSetChanged()
                 return@Observer
             }
             tvSelectedStart.text = resources.getString(R.string.time_template)

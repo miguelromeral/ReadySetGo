@@ -9,7 +9,8 @@
     <color name="appIconBackground">#ffc826</color>
 
     <color name="colorBest">#ff00fb</color>
-    <color name="colorBetter">#00ff00</color>
-    <color name="colorWorse">#ffff22</color>
+    <color name="colorBetter">#77ff73</color>
+    <color name="colorWorse">#c4bf1a</color>
+
 
 </resources>
