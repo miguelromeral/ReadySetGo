@@ -59,7 +59,10 @@ class HomeViewModel(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    val bestRecord = database.getBestStart()
+    val bestRecord: LiveData<Start> by lazy {
+        database.getBestStart()
+    }
+
 
     init{
         _countdown.value = COUNTDOWN_NO_STARTED

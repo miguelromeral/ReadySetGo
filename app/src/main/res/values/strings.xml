@@ -21,7 +21,7 @@
 
     <!-- Preference Titles -->
     <string name="preferences_version_title">Versión instalada</string>
-    <string name="preferences_version_summary" translatable="false">1.0.1 (#2) (Beta)</string>
+    <string name="preferences_version_summary" translatable="false">1.0.3 (#4) (Beta)</string>
 
 
     <!-- Preferences IDs -->
@@ -29,9 +29,10 @@
     <string name="preference_id_secondduration" translatable="false">preferenceSecondDuration</string>
     <string name="preference_id_maxwait" translatable="false">preferenceMaxWaitingTime</string>
     <string name="preference_id_restore_game_settings" translatable="false">preferenceRestartGameSettings</string>
+    <string name="preference_id_date_format" translatable="false">preferenceDateFormat</string>
 
     <!-- History Screen -->
-    <string name="details_waiting_time">Tiempo de espera:</string>
+    <string name="details_waiting_time">Espera:</string>
     <string name="no_time_set_yet">Sin tiempos todavía</string>
     <string name="time_template" translatable="false">-.---</string>
 
@@ -53,6 +54,8 @@
     <string name="preference_restart_game_settings">Establecer configuración por defecto</string>
     <string name="preference_restart_game_settings_summary">
         Establece los ajustes del juego a como eran cuando la instalaste. Esta acción no elimina tus datos actuales.</string>
+    <string name="preference_date_format_title">Formato de fecha</string>
+
 
 
     <string name="set_custom">PERSONALIZADO</string>
@@ -63,7 +66,11 @@
     <string name="game_settings_changed_ok">¡Ajustes del juego asignados por defecto con éxito!</string>
 
 
-    <string name="step_time">Tiempo de paso:</string>
-    <string name="max_wait_time_formatted">Máx. tiempo espera:</string>
+    <string name="date_format_one" translatable="false">yyyy\/MM\/dd HH:mm:ss</string>
+    <string name="date_format_two" translatable="false">dd\/MM\/yyyy HH:mm:ss</string>
+
+
+    <string name="step_time">Paso:</string>
+    <string name="max_wait_time_formatted">Máx. Esp:</string>
 
 </resources>

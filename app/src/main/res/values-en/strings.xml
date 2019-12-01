@@ -28,11 +28,10 @@
     <string name="attachment_title">Download incoming attachments</string>
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
 
     <!-- History Screen -->
-    <string name="details_waiting_time">Waiting time: </string>
+    <string name="details_waiting_time">Wait:</string>
     <string name="no_time_set_yet">No times set yet</string>
 
     <!-- Options menu -->
@@ -61,8 +60,9 @@
     <string name="game_settings_changed_ok">Default Game Configuration successfully changed!</string>
 
 
-    <string name="step_time">Step Time:</string>
-    <string name="max_wait_time_formatted">Max Waiting Time:</string>
+    <string name="step_time">Step:</string>
+    <string name="max_wait_time_formatted">Max Wait:</string>
+    <string name="preference_date_format_title">Date Format</string>
 
 
 </resources>

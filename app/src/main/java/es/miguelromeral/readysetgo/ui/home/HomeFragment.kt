@@ -70,6 +70,12 @@ class HomeFragment : Fragment() {
             else {
                 tvScore.text = resources.getString(R.string.home_last_score) + " " + formatTime(newTime)
 
+                val best = homeViewModel.bestRecord.value
+                best?.let {
+                    tvScore.text = "YEAH!"
+                }
+
+
                 /*
                 homeViewModel.bestRecord.value?.let{
                     tvScore.setTextColor(resources.getColor(R.color.colorWorse))

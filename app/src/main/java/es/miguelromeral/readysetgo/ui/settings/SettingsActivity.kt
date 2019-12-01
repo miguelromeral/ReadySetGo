@@ -7,14 +7,11 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import es.miguelromeral.readysetgo.MyApplication
 import es.miguelromeral.readysetgo.R
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.preference.PreferenceManager
-import androidx.preference.SeekBarPreference
+import androidx.preference.*
 import es.miguelromeral.readysetgo.ui.home.HomeViewModel
 
 

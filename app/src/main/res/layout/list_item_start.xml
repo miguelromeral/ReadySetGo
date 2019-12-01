@@ -19,55 +19,56 @@
         android:layout_height="wrap_content"
         android:onClick="@{() -> clickListener.onClick(record)}">
 
+
         <TextView
             android:id="@+id/item_date"
             style="@style/StartDetails"
-            android:layout_marginStart="8dp"
+            app:dateFormatted="@{record}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/item_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            app:layout_constraintStart_toEndOf="@+id/item_step"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.289"
-            tools:text="2019/11/27 12:00:00"
-            app:dateFormatted="@{record}" />
+            app:layout_constraintVertical_bias="0.050000012"
+            tools:text="2019/11/27 12:00:00" />
 
         <TextView
             android:id="@+id/item_time"
             style="@style/StartResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/item_date"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="0.637"
-            app:timeFormatted="@{record}"/>
+            app:layout_constraintVertical_bias="0.050000012"
+            app:timeFormatted="@{record}"
+            tools:text="0.637" />
 
         <TextView
             android:id="@+id/item_waiting"
             style="@style/StartDetails"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/item_time"
-            app:layout_constraintTop_toBottomOf="@+id/item_date"
-            tools:text="7.567"
-            app:waitingFormatted="@{record}" />
-
+            app:layout_constraintStart_toStartOf="@+id/item_maxwaittime"
+            app:layout_constraintTop_toBottomOf="@+id/item_maxwaittime"
+            app:waitingFormatted="@{record}"
+            tools:text="Wait: 7.567" />
 
         <TextView
             android:id="@+id/item_step"
             style="@style/StartDetails"
-            app:layout_constraintStart_toStartOf="@+id/item_waiting"
-            app:layout_constraintTop_toBottomOf="@+id/item_waiting"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/item_time"
+            app:layout_constraintTop_toTopOf="@+id/item_time"
             app:stepFormatted="@{record}"
-            tools:text="1.000" />
+            tools:text="Step: 1.000" />
 
         <TextView
             android:id="@+id/item_maxwaittime"
             style="@style/StartDetails"
-            android:layout_marginStart="32dp"
-            app:layout_constraintStart_toEndOf="@+id/item_step"
-            app:layout_constraintTop_toBottomOf="@+id/item_waiting"
+            app:layout_constraintStart_toStartOf="@+id/item_step"
+            app:layout_constraintTop_toBottomOf="@+id/item_step"
             app:maxWaitingTimeFormatted="@{record}"
-            tools:text="2.500" />
+            tools:text="Max. Wait: 2.500" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

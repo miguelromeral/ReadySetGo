@@ -28,6 +28,9 @@ class MyApplication : Application() {
         fun getPreferenceMaxWait() = myPreferences.getInt(allResources.getString(R.string.preference_id_maxwait), 2000).toLong()
 
         fun getPreferenceSecondDuration() = myPreferences.getInt(allResources.getString(R.string.preference_id_secondduration), 1000).toLong()
+        fun getPreferenceDateFormat() = myPreferences.getString(
+            allResources.getString(R.string.preference_id_date_format),
+            allResources.getString(R.string.date_format_one))
     }
 
     override fun onCreate(){

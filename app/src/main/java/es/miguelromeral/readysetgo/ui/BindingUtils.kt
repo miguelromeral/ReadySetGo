@@ -2,6 +2,7 @@ package es.miguelromeral.readysetgo.ui
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import es.miguelromeral.readysetgo.MyApplication
 import es.miguelromeral.readysetgo.R
 import es.miguelromeral.readysetgo.ui.database.Start
 import java.text.SimpleDateFormat
@@ -53,7 +54,7 @@ fun formatTime(time: Long): String{
 
 fun convertLongToTime(time: Long): String {
     val date = Date(time)
-    val format = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+    val format = SimpleDateFormat(MyApplication.getPreferenceDateFormat())
     return format.format(date)
 }
 

@@ -9,4 +9,11 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+
+    <string-array name="date_format">
+        <item>@string/date_format_one</item>
+        <item>@string/date_format_two</item>
+    </string-array>
+
 </resources>
