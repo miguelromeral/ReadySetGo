@@ -21,7 +21,7 @@
 
     <!-- Preference Titles -->
     <string name="preferences_version_title">Versión instalada</string>
-    <string name="preferences_version_summary" translatable="false">1.0.3 (#4) (Beta)</string>
+    <string name="preferences_version_summary" translatable="false">1.0.3 (#4) (Beta) </string>
 
 
     <!-- Preferences IDs -->
