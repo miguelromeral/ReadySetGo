@@ -4,6 +4,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import es.miguelromeral.readysetgo.MyApplication
 import es.miguelromeral.readysetgo.R
+import es.miguelromeral.readysetgo.ui.database.ReadySetGoDatabase
 import es.miguelromeral.readysetgo.ui.database.Start
 import java.text.SimpleDateFormat
 import java.util.*
@@ -26,6 +27,13 @@ fun TextView.setDateFormatted(item: Start) {
 fun TextView.setWaitingFormatted(item: Start) {
     item?.let{
         text = context.resources.getString(R.string.details_waiting_time) + " " + formatTime(item.waitingTime)
+    }
+}
+
+@BindingAdapter("gameModeFormatted")
+fun TextView.setGameModeFormatted(item: Start) {
+    item?.let{
+        text = ReadySetGoDatabase.getGameModeFromIntFormatted(item.gameMode)
     }
 }
 

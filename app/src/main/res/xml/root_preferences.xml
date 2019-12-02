@@ -45,6 +45,14 @@
                     android:summary="@string/preference_restart_game_settings_summary"
                     app:singleLineTitle="true" />
 
+
+                <DropDownPreference
+                    android:key="@string/preference_id_game_mode"
+                    android:title="@string/preference_game_mode_settings_title"
+                    android:summary="@string/preference_game_mode_settings_summary"
+                    android:entries="@array/settings_game_format_titles"
+                    android:entryValues="@array/settings_game_format_values"/>
+
         </PreferenceCategory>
 
         <PreferenceCategory

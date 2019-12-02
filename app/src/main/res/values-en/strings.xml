@@ -19,15 +19,9 @@
 
 
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
     <string name="preferences_version_title">Installed version</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
 
 
     <!-- History Screen -->
@@ -36,7 +30,6 @@
 
     <!-- Options menu -->
     <string name="clear_all_records">Clear all records</string>
-    <string name="settings">Settings</string>
     <string name="option_msg_clear_starts">Are you sure you want to clear all the starts data? This action cannot be undone</string>
     <string name="option_msg_clear_all">REMOVE DATA</string>
     <string name="option_msg_cancel">CANCEL</string>
@@ -63,6 +56,13 @@
     <string name="step_time">Step:</string>
     <string name="max_wait_time_formatted">Max Wait:</string>
     <string name="preference_date_format_title">Date Format</string>
+    <string name="content_description_recordslist">List in which records are stored.</string>
+    <string name="preference_game_mode_settings_title">Countdown Protocol</string>
+    <string name="preference_game_mode_settings_summary">Set how the lights are turning on and when the player has to tap the screen in order to get a score</string>
+    <string name="preference_string_game_mode_one">All are off</string>
+    <string name="preference_string_game_mode_two">Last is on (green)</string>
+    <string name="best_record">Best Score</string>
+    <string name="selected_record">Selected Score</string>
 
 
 </resources>

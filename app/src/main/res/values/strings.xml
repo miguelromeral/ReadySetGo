@@ -21,7 +21,7 @@
 
     <!-- Preference Titles -->
     <string name="preferences_version_title">Versión instalada</string>
-    <string name="preferences_version_summary" translatable="false">1.0.3 (#4) (Beta) </string>
+    <string name="preferences_version_summary" translatable="false">1.0.4 (#5) (Beta)</string>
 
 
     <!-- Preferences IDs -->
@@ -30,11 +30,25 @@
     <string name="preference_id_maxwait" translatable="false">preferenceMaxWaitingTime</string>
     <string name="preference_id_restore_game_settings" translatable="false">preferenceRestartGameSettings</string>
     <string name="preference_id_date_format" translatable="false">preferenceDateFormat</string>
+    <string name="preference_id_game_mode" translatable="false">preferenceGameMode</string>
+
+    <string name="preference_game_mode_one" translatable="false">gameMode_all_off</string>
+    <string name="preference_game_mode_two" translatable="false">gameMode_last_on</string>
+
+    <string name="preference_string_game_mode_one">Todas apagadas</string>
+    <string name="preference_string_game_mode_two">Última encendida (verde)</string>
+
+
 
     <!-- History Screen -->
     <string name="details_waiting_time">Espera:</string>
     <string name="no_time_set_yet">Sin tiempos todavía</string>
     <string name="time_template" translatable="false">-.---</string>
+
+
+
+    <string name="best_record">Mejor Tiempo</string>
+    <string name="selected_record">Tiempo Seleccionado</string>
 
     <!-- Options menu -->
     <string name="clear_all_records">Eliminar registros</string>
@@ -56,6 +70,8 @@
         Establece los ajustes del juego a como eran cuando la instalaste. Esta acción no elimina tus datos actuales.</string>
     <string name="preference_date_format_title">Formato de fecha</string>
 
+    <string name="preference_game_mode_settings_title">Protocolo de Cuenta Atrás</string>
+    <string name="preference_game_mode_settings_summary">Establece cómo se deben encender las luces y cuándo se debe tocar la pantalla para obtener un resultado</string>
 
 
     <string name="set_custom">PERSONALIZADO</string>
@@ -68,9 +84,12 @@
 
     <string name="date_format_one" translatable="false">yyyy\/MM\/dd HH:mm:ss</string>
     <string name="date_format_two" translatable="false">dd\/MM\/yyyy HH:mm:ss</string>
+    <string name="date_format_three" translatable="false">yyyy\/MM\/dd</string>
+    <string name="date_format_four" translatable="false">dd\/MM\/yyyy</string>
 
 
     <string name="step_time">Paso:</string>
     <string name="max_wait_time_formatted">Máx. Esp:</string>
+    <string name="content_description_recordslist">Lista en que los records son almacenados.</string>
 
 </resources>

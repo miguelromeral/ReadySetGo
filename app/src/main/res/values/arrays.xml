@@ -14,6 +14,18 @@
     <string-array name="date_format">
         <item>@string/date_format_one</item>
         <item>@string/date_format_two</item>
+        <item>@string/date_format_three</item>
+        <item>@string/date_format_four</item>
+    </string-array>
+
+
+    <string-array name="settings_game_format_titles">
+        <item>@string/preference_string_game_mode_one</item>
+        <item>@string/preference_string_game_mode_two</item>
+    </string-array>
+    <string-array name="settings_game_format_values">
+        <item>@string/preference_game_mode_one</item>
+        <item>@string/preference_game_mode_two</item>
     </string-array>
 
 </resources>

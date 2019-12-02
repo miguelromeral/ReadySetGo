@@ -31,10 +31,11 @@
                 style="@style/StartResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="@{historyViewModel.bestText}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tvSelectedStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:text="0.100" />
 
             <TextView
@@ -43,20 +44,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="134dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tvBestStart"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSelectedTitle"
                 tools:text="0.250" />
 
             <TextView
                 android:id="@+id/tvDifference"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:text="@{historyViewModel.difference}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvSelectedStart"
-                app:layout_constraintTop_toBottomOf="@+id/tvSelectedStart"
+                app:layout_constraintBottom_toBottomOf="@+id/tvSelectedStart"
+                app:layout_constraintEnd_toStartOf="@+id/tvSelectedStart"
                 tools:text="+0.123" />
+
+            <TextView
+                android:id="@+id/tvBestTitle"
+                style="@style/StartDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/best_record"
+                app:layout_constraintBottom_toTopOf="@+id/tvBestStart"
+                app:layout_constraintEnd_toEndOf="@+id/tvBestStart"
+                app:layout_constraintStart_toStartOf="@+id/tvBestStart"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tvSelectedTitle"
+                style="@style/StartDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/selected_record"
+                app:layout_constraintBottom_toTopOf="@+id/tvSelectedStart"
+                app:layout_constraintEnd_toEndOf="@+id/tvSelectedStart"
+                app:layout_constraintStart_toStartOf="@+id/tvSelectedStart"
+                app:layout_constraintTop_toTopOf="@+id/tvBestTitle" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -71,7 +98,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutStats" />
+            app:layout_constraintTop_toBottomOf="@+id/layoutStats"
+            android:contentDescription="@string/content_description_recordslist"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

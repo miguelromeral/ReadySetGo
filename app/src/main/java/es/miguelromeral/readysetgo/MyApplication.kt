@@ -31,6 +31,17 @@ class MyApplication : Application() {
         fun getPreferenceDateFormat() = myPreferences.getString(
             allResources.getString(R.string.preference_id_date_format),
             allResources.getString(R.string.date_format_one))
+
+        fun getPreferenceGameMode(): String {
+            val default = allResources.getString(R.string.preference_game_mode_one)
+            val set = myPreferences.getString(
+                allResources.getString(R.string.preference_id_game_mode),
+                default)
+            set?.let{
+                return it
+            }
+            return default
+        }
     }
 
     override fun onCreate(){

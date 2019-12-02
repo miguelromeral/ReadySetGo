@@ -32,10 +32,17 @@ class HomeViewModel(
         const val NO_SCORE = 0L
     }
 
+    private var _semaphoreCount = 5
+    val semaphoreCount: Int
+        get() = _semaphoreCount
+
     private var preferenceCountdownMaxWait: Long = DEFAULT_MAX_WAIT
     private var preferenceOneSecondDuration: Long = DEFAULT_SECOND_DURATION
-    private var timeToTurnOn = preferenceOneSecondDuration * 5
+    private var timeToTurnOn = preferenceOneSecondDuration * semaphoreCount
 
+    private var _gameMode = MutableLiveData<String>()
+    val gameMode: LiveData<String>
+        get() = _gameMode
 
     private var _countdown = MutableLiveData<Int>()
     val countdown: LiveData<Int>
@@ -71,13 +78,21 @@ class HomeViewModel(
     }
 
     fun initSettings(){
+        _gameMode.value = MyApplication.getPreferenceGameMode()
+
+        _semaphoreCount = when(gameMode.value){
+            MyApplication.allResources.getString(R.string.preference_game_mode_one) -> 5
+            MyApplication.allResources.getString(R.string.preference_game_mode_two) -> 4
+            else -> 5
+        }
+
         preferenceCountdownMaxWait = MyApplication.getPreferenceMaxWait()
         preferenceOneSecondDuration = MyApplication.getPreferenceSecondDuration()
         timeToTurnOn = preferenceOneSecondDuration * 5
     }
 
     private fun initTimer(){
-        randomWait = timeToTurnOn + 200L + Random.nextLong(preferenceCountdownMaxWait)
+        randomWait = timeToTurnOn + Random.nextLong(preferenceCountdownMaxWait)
         timer = object : CountDownTimer(randomWait, preferenceOneSecondDuration){
             override fun onTick(milisUtilFinished: Long){
                 _countdown.value = ((randomWait - milisUtilFinished) / preferenceOneSecondDuration).toInt() + 1
@@ -111,8 +126,15 @@ class HomeViewModel(
             else -> {
                 timer.cancel()
                 _countdown.value = COUNTDOWN_NO_STARTED
+
             }
         }
+    }
+
+    fun suspendTreat(){
+        _countdown.value = COUNTDOWN_NO_STARTED
+        timestamp = null
+        timer.cancel()
     }
 
     private suspend fun createStartRecord(date: Long, time:Long, waiting: Long){
@@ -122,7 +144,9 @@ class HomeViewModel(
                 time = time,
                 waitingTime = waiting,
                 stepTime = preferenceOneSecondDuration,
-                maxWaitTime = preferenceCountdownMaxWait)
+                maxWaitTime = preferenceCountdownMaxWait
+                ,gameMode = ReadySetGoDatabase.getGameModeFromString(gameMode.value)
+            )
             database.insert(record)
         }
     }

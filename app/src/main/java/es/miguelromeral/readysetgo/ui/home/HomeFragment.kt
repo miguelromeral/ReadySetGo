@@ -70,12 +70,6 @@ class HomeFragment : Fragment() {
             else {
                 tvScore.text = resources.getString(R.string.home_last_score) + " " + formatTime(newTime)
 
-                val best = homeViewModel.bestRecord.value
-                best?.let {
-                    tvScore.text = "YEAH!"
-                }
-
-
                 /*
                 homeViewModel.bestRecord.value?.let{
                     tvScore.setTextColor(resources.getColor(R.color.colorWorse))
@@ -89,13 +83,8 @@ class HomeFragment : Fragment() {
         lista = mutableListOf(binding.imSep0, binding.imSep1, binding.imSep2, binding.imSep3, binding.imSep4)
 
         homeViewModel.countdown.observe(this, Observer {
-            it?.let{
-                if(it == HomeViewModel.COUNTDOWN_LAUNCHED ||
-                    it == HomeViewModel.COUNTDOWN_NO_STARTED){
-                    paintLights(0)
-                }else{
-                    paintLights(it)
-                }
+            it?.let {
+                paintLights(it)
             }
         })
         paintLights(0)
@@ -106,9 +95,24 @@ class HomeFragment : Fragment() {
     private val IMG_OFF = R.drawable.semaphore_black
     private val IMG_ON = R.drawable.semaphore_red
 
-    fun paintLights(number: Int){
+    fun paintLights(state: Int){
+
+        homeViewModel.gameMode.value?.let {
+            when(it){
+                resources.getString(R.string.preference_game_mode_one) -> {
+                    paintLightsOne(state)
+                }
+                resources.getString(R.string.preference_game_mode_two) -> {
+                    paintLightsTwo(state)
+                }
+            }
+        }
+    }
+
+    fun paintLightsOne(number: Int){
         when(number){
-            0 -> {
+            HomeViewModel.COUNTDOWN_NO_STARTED,
+            HomeViewModel.COUNTDOWN_LAUNCHED -> {
                 lista.forEach{
                     it.setImageResource(IMG_OFF)
                 }
@@ -127,6 +131,35 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+
+    fun paintLightsTwo(number: Int){
+        when(number){
+            HomeViewModel.COUNTDOWN_NO_STARTED -> {
+                lista.forEach{
+                    it.setImageResource(IMG_OFF)
+                }
+            }
+            HomeViewModel.COUNTDOWN_LAUNCHED -> {
+                lista.forEach{
+                    it.setImageResource(R.drawable.semaphore_green)
+                }
+            }
+            in 1..4 -> {
+                lista.take(number).forEach{
+                    it.setImageResource(IMG_ON)
+                }
+                lista.takeLast(5 - number).forEach{
+                    it.setImageResource(IMG_OFF)
+                }
+            }
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        //homeViewModel.suspendTreat()
     }
 
     override fun onResume() {

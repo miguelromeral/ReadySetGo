@@ -24,4 +24,7 @@ data class Start(
 
     @ColumnInfo(name = "max_wait_time")
     val maxWaitTime: Long = 0L
+
+    ,@ColumnInfo(name = "game_mode")
+    val gameMode: Int = 0
 )

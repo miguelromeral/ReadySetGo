@@ -29,7 +29,6 @@
             app:layout_constraintHorizontal_bias="0.85"
             app:layout_constraintStart_toEndOf="@+id/item_step"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.050000012"
             tools:text="2019/11/27 12:00:00" />
 
         <TextView
@@ -38,16 +37,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.050000012"
+            app:layout_constraintVertical_bias="0.18"
             app:timeFormatted="@{record}"
             tools:text="0.637" />
 
         <TextView
             android:id="@+id/item_waiting"
             style="@style/StartDetails"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/item_maxwaittime"
             app:layout_constraintTop_toBottomOf="@+id/item_maxwaittime"
             app:waitingFormatted="@{record}"
@@ -69,6 +72,16 @@
             app:layout_constraintTop_toBottomOf="@+id/item_step"
             app:maxWaitingTimeFormatted="@{record}"
             tools:text="Max. Wait: 2.500" />
+
+        <TextView
+            android:id="@+id/tvGameMode"
+            style="@style/StartDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:gameModeFormatted="@{record}"
+            app:layout_constraintEnd_toEndOf="@+id/item_date"
+            app:layout_constraintTop_toBottomOf="@+id/item_date"
+            tools:text="GameMode" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
